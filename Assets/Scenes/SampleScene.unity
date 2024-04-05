@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 186890869}
   - component: {fileID: 186890868}
   - component: {fileID: 186890867}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -457,6 +457,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axisMovement: 0
   speed: 5
+  jumpInpulse: 1
+  myLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  maxJumps: 1
+  saltos: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
