@@ -457,11 +457,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axisMovement: 0
   speed: 5
-  jumpInpulse: 1
+  jumpInpulse: 3
   myLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  maxJumps: 1
+  maxJumps: 5
   saltos: 1
 --- !u!1 &519420028
 GameObject:
