@@ -9,7 +9,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] TMP_Text life;
     [SerializeField] TMP_Text time;
     [SerializeField] GameObject winPanel;
-    [SerializeField] GameObject winLose;
+    [SerializeField] GameObject losePanel;
 
     void UpdateCoins(int value)
     {
