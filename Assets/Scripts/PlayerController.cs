@@ -118,21 +118,21 @@ public class PlayerController : MonoBehaviour
     {
         if (value.isPressed)
         {
-            print("ColorR");
+            mySR.color = Color.red;
         }
     }
     void OnColorG(InputValue value)
     {
         if (value.isPressed)
         {
-            print("ColorG");
+            mySR.color = Color.green;
         }
     }
     void OnColorB(InputValue value)
     {
         if (value.isPressed)
         {
-            print("ColorB");
+            mySR.color = Color.blue;
         }
     }
     void ValidateJump(InputValue value)
