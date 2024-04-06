@@ -6,10 +6,11 @@ public class MenuController : MonoBehaviour
 {
     public void ApplicationQuit()
     {
+        print("Hola");
         Application.Quit();
     }
     public void GoToScena()
     {
-        Application.Quit();
+        SceneManager.LoadScene(1);
     }
 }
