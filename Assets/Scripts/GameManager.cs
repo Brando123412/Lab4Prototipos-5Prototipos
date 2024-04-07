@@ -1,34 +1,43 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    int time;
-    bool pause;
+    [SerializeField]float time;
+    bool pause = false;
     public static Action OnWin;
     public static Action OnLose;
+    [SerializeField] UiManager uiManager;
 
+    void Awake()
+    {
+        Time.timeScale = 1;
+    }
+    private void Update()
+    {
+        UpdateTime();
+    }
     void UpdateTime()
     {
-        
-    }
-    public string GetTime()
-    {
-        string xd="sadsa";
-        return xd;
+        time = Time.time;
+        uiManager.UpdateTime(time);
     }
     public void PauseGame()
     {
+        if (!pause)
+        {
+            Time.timeScale = 0;
+        }
 
     }
-    public void UnPauseGame()
+    public void Reintentar()
     {
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public void CheckGameStatus()
+    public void IrAMenu()
     {
-
+        SceneManager.LoadScene(0);
     }
 }

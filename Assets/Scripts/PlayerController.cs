@@ -23,12 +23,15 @@ public class PlayerController : MonoBehaviour
     private Func<bool> isCriteria;
     private Action isMovement;
 
+    bool noColor = false;
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
         mySR = GetComponent<SpriteRenderer>();
 
         ChangeGravity(Dirrection.UP);
+        GameManager.OnWin += StopPlayer;
+        GameManager.OnLose += StopPlayer;
     }
     private void FixedUpdate()
     {
@@ -62,7 +65,6 @@ public class PlayerController : MonoBehaviour
     }
     public void OnPowerUp(InputValue value)
     {
-        
             Vector2 directionChange = value.Get<Vector2>();
 
             if (Vector2.Dot(directionChange, Vector2.up) == 1)
@@ -81,7 +83,6 @@ public class PlayerController : MonoBehaviour
             {
                 ChangeGravity(Dirrection.LEFT);
             }
-       
     }
     private void ChangeGravity(Dirrection caseDirection)
     {
@@ -116,35 +117,54 @@ public class PlayerController : MonoBehaviour
     }
     void OnColorR(InputValue value)
     {
-        if (value.isPressed)
+        if (value.isPressed && noColor == false)
         {
             mySR.color = Color.red;
         }
     }
     void OnColorG(InputValue value)
     {
-        if (value.isPressed)
+        if (value.isPressed && noColor == false)
         {
             mySR.color = Color.green;
         }
     }
     void OnColorB(InputValue value)
     {
-        if (value.isPressed)
+        if (value.isPressed && noColor == false)
         {
             mySR.color = Color.blue;
         }
     }
-    void ValidateJump(InputValue value)
+    void StopPlayer()
     {
-
+        Time.timeScale = 0;
     }
-    void ValidateChanceColor()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.CompareTag("Color"))
+        {
+            noColor = true;
+            if (collision.gameObject.GetComponent<SpriteRenderer>().color != mySR.color) {
+                InvokeRepeating("ColorDanno", 0f, 1f);
+            }
+            
+        }
     }
-    void StopController()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-
+        if (collision.CompareTag("Color"))
+        {
+            noColor = false;
+            if (collision.gameObject.GetComponent<SpriteRenderer>().color != mySR.color)
+            {
+                CancelInvoke("ColorDanno");
+            }
+            
+        }
+    }
+    void ColorDanno()
+    {
+        HealthSystem.modifyHealth?.Invoke(-2);
     }
 }
