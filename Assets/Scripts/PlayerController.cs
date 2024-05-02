@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private Action isMovement;
 
     bool noColor = false;
+
+    [SerializeField] HandlerHealtSO HHSO;
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -165,6 +167,7 @@ public class PlayerController : MonoBehaviour
     }
     void ColorDanno()
     {
+        HHSO.ModifyLife(-2);
         HealthSystem.modifyHealth?.Invoke(-2);
     }
 }

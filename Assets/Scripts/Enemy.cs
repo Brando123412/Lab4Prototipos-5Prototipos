@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform[] pivots;
     int current=0;
     float speed = 5;
+    [SerializeField] HandlerHealtSO HHSO;
     private void Update()
     {
         Movement();
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             HealthSystem.modifyHealth?.Invoke(-valuedanno);
+            HHSO.ModifyLife(valuedanno);
         }
         if (collision.CompareTag("Pivots"))
         {

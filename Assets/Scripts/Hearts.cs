@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Hearts : MonoBehaviour
 {
-    int valueLife;
+    [SerializeField]int valueLife;
+    [SerializeField] HandlerHealtSO HHSO;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            HealthSystem.modifyHealth?.Invoke(valueLife);
+            HHSO.ModifyLife(valueLife);
+            //HealthSystem.modifyHealth?.Invoke(valueLife);
         }
     }
 }
