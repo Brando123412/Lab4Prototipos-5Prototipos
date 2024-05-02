@@ -7,6 +7,7 @@ public class PointSystem : MonoBehaviour
     public static Action<int> gainPoints;
     public static Action<int> UpdatePoints;
     int points;
+    [SerializeField] OnWin_and_OnLose OWSO;
     private void Awake()
     {
         gainPoints += UpdateCurrentPoints;
@@ -17,7 +18,7 @@ public class PointSystem : MonoBehaviour
         print("hola");
         if(points >= 6)
         {
-            GameManager.OnWin?.Invoke();
+            OWSO.ActiveOnWin();
         }
         UpdatePoints.Invoke(points);
     }

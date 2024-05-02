@@ -168,6 +168,5 @@ public class PlayerController : MonoBehaviour
     void ColorDanno()
     {
         HHSO.ModifyLife(-2);
-        HealthSystem.modifyHealth?.Invoke(-2);
     }
 }

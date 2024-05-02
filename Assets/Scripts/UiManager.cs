@@ -13,12 +13,15 @@ public class UiManager : MonoBehaviour
     [SerializeField] GameObject losePanel;
     [SerializeField] GameObject[] paneles;
     float timeFinalFloat;
+    [SerializeField] HandlerHealtSO HHSO;
+    [SerializeField] OnWin_and_OnLose OWSo;
+    [SerializeField] PointSOController PSO;
     private void Awake()
     {
-        HealthSystem.UpdateHealth += UpdateLife;
-        PointSystem.UpdatePoints += UpdateCoins;
-        GameManager.OnWin += ActivateWin;
-        GameManager.OnLose += ActivateLose;
+        HHSO.lifeUpdate += UpdateLife;
+        PSO.UpdatePoints += UpdateCoins;
+        OWSo.OnLose += ActivateLose;
+        OWSo.OnWin += ActivateWin;
     }
     void UpdateCoins(int value)
     {

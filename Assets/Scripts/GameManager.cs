@@ -10,10 +10,14 @@ public class GameManager : MonoBehaviour
     public static Action OnWin;
     public static Action OnLose;
     [SerializeField] UiManager uiManager;
+    [SerializeField] PointSOController PSO;
+    [SerializeField] HandlerHealtSO HHSO;
 
     void Awake()
     {
         Time.timeScale = 1;
+        PSO.StartSOPointSO();
+        HHSO.StartSOLifeSO();
     }
     private void Update()
     {

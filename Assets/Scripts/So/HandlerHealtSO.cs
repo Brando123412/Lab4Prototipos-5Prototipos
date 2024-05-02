@@ -9,17 +9,19 @@ public class HandlerHealtSO : ScriptableObject
     public event Action<int> lifeUpdate;
     public event Action<int> modifyHealth;
     [SerializeField] int health;
+
+    [SerializeField] OnWin_and_OnLose OWSO; 
     public void UpdateLife()
     {
-
+        lifeUpdate?.Invoke(health);
     }
     public void ModifyLife(int life)
     {
         modifyHealth?.Invoke(life);
     }
-    private void Awake()
+    public void StartSOLifeSO()
     {
-        //modifyHealth += UpdateCurrentHealth;
+        modifyHealth += UpdateCurrentHealth;
     }
     void UpdateCurrentHealth(int value)
     {
@@ -27,7 +29,7 @@ public class HandlerHealtSO : ScriptableObject
         lifeUpdate.Invoke(health);
         if (health <= 0)
         {
-            GameManager.OnLose?.Invoke();
+            OWSO.ActiveOnLose();
         }
     }
 }

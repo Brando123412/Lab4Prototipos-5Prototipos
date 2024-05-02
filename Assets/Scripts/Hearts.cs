@@ -11,7 +11,6 @@ public class Hearts : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             HHSO.ModifyLife(valueLife);
-            //HealthSystem.modifyHealth?.Invoke(valueLife);
         }
     }
 }

@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            HealthSystem.modifyHealth?.Invoke(-valuedanno);
+           
             HHSO.ModifyLife(valuedanno);
         }
         if (collision.CompareTag("Pivots"))
